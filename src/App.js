@@ -11,7 +11,6 @@ import { v4 as uuidv4 } from 'uuid';
   {id:uuidv4(), charge:'credit card bill', amount:1200},
 ]*/
 
-//if the expenses are there, get the value of these expenses
 const initialExpenses = localStorage.getItem('expenses')? JSON.parse(localStorage.getItem('expenses')) : []
 
 function App() {
@@ -79,13 +78,13 @@ const clearItems =()=>{
   handleAlert({type:'danger', text:'all item deleted'} )
 }
 // delete all items
-const handleDelete =(id)=>{      //if your id does not match the id I am passing in
+const handleDelete =(id)=>{    
   let tempExpenses = expenses.filter(item => item.id !== id);
   setExpenses(tempExpenses);  
   handleAlert({type:'danger', text:'item deleted'} )
 }
 // edit all items
-const handleEdit =(id)=>{//if the id I am clicking match the id I am passing in, return this item
+const handleEdit =(id)=>{
   let expense = expenses.find(item => item.id === id)
   let {charge,amount} = expense;
   setCharge(charge);
